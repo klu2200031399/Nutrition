@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pregnancy Nutrition Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        p {
+            color: #666;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #dietPlan {
+            padding: 20px;
+            margin-top: 20px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+        #countdown {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pregnancy Nutrition Tracker</h1>
+        <p>Select your current month of pregnancy:</p>
+        <select id="months">
+            <option value="1">1 Month</option>
+            <option value="2">2 Months</option>
+            <!-- Add options for months 3 to 9 -->
+            <option value="3">3 Months</option>
+            <option value="4">4 Months</option>
+            <option value="5">5 Months</option>
+            <option value="6">6 Months</option>
+            <option value="7">7 Months</option>
+            <option value="8">8 Months</option>
+            <option value="9">9 Months</option>
+        </select>
+        <button onclick="calculateDiet()">Choose</button>
+
+        <div id="dietPlan">
+            <!-- Diet plan details will be displayed here -->
+        </div>
+    </div>
+
+    <div id="countdown">
+        <!-- Countdown clock will be displayed here -->
+    </div>
+
+    <script>
+        function calculateDiet() {
+            const selectedMonth = parseInt(document.getElementById("months").value);
+            const dietPlan = getDietPlan(selectedMonth);
+            displayDietPlan(dietPlan);
+            startCountdown(selectedMonth);
+        }
+
+        function getDietPlan(month) {
+            // Define your diet plan based on the month of pregnancy
+            let dietPlan = "";
+
+            switch (month) {
+                case 1:
+                    dietPlan = `
+                        <h2>Diet Plan for 1st Day in Pregnancy </h2>
+                        <ul>
+                            <li>Include plenty of fruits and vegetables.</li>
+                            <li>Ensure you are getting enough folate and iron.</li>
+                            <li>Drink plenty of water.</li>
+                        </ul>
+                        <h2>Diet Plan for 2nd Day in Pregnancy</h2>
+                        <ul>
+                            <li>Focus on whole grains and lean proteins.</li>
+                            <li>Limit caffeine and avoid alcohol.</li>
+                            <li>Stay hydrated with water and natural juices.</li>
+                        </ul>
+                    `;
+                    break;
+                case 2:
+                    dietPlan = "Your diet plan for the second month...";
+                    break;
+                // Define diet plans for months 3 to 9
+                case 3:
+                    dietPlan = "Your diet plan for the third month...";
+                    break;
+                case 4:
+                    dietPlan = "Your diet plan for the fourth month...";
+                    break;
+                case 5:
+                    dietPlan = "Your diet plan for the fifth month...";
+                    break;
+                case 6:
+                    dietPlan = "Your diet plan for the sixth month...";
+                    break;
+                case 7:
+                    dietPlan = "Your diet plan for the seventh month...";
+                    break;
+                case 8:
+                    dietPlan = "Your diet plan for the eighth month...";
+                    break;
+                case 9:
+                    dietPlan = "Your diet plan for the ninth month...";
+                    break;
+                default:
+                    dietPlan = "Invalid month selected";
+            }
+
+            return dietPlan;
+        }
+
+        function displayDietPlan(plan) {
+            const dietPlanDiv = document.getElementById("dietPlan");
+            dietPlanDiv.innerHTML = plan;
+        }
+
+        function startCountdown(month) {
+            const dueDate = new Date(); // Set your due date here
+            dueDate.setMonth(dueDate.getMonth() + month);
+
+            const countdownDiv = document.getElementById("countdown");
+            setInterval(function() {
+                const now = new Date();
+                const remainingTime = dueDate - now;
+
+                const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+                countdownDiv.innerHTML = `Countdown: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,285 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .card {
+            border: 2px solid #27ae60;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+            background-color: #fff;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-img-top {
+            border-radius: 10px 10px 0 0;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .btn-success {
+            background-color: #27ae60;
+            border-color: #27ae60;
+        }
+
+        .btn-success:hover {
+            background-color: #2ecc71;
+            border-color: #2ecc71;
+        }
+
+        .wrapper {
+            padding: 90px;
+        }
+
+        h2 {
+            position: relative;
+            vertical-align: middle;
+            padding: 10px;
+            padding-left: 25px;
+            color: #ccc;
+            margin: 0;
+        }
+
+        h2 strong {
+            position: relative;
+            z-index: 2;
+            background: #24282f;
+            padding: 4px 8px;
+        }
+
+        h2 span {
+            vertical-align: middle;
+            font-size: 0.7em;
+            color: #aaa;
+            margin-left: 10px;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            z-index: 1;
+            bottom: 50%;
+            margin-bottom: -2px;
+            height: 2px;
+            left: 0;
+            right: 0;
+            background: lighten(#24282f, 10%);
+        }
+
+        .cards {
+            display: flex;
+            flex-flow: row wrap;
+        }
+
+        .card {
+            position: relative;
+            margin: 20px;
+            width: 180px;
+            height: 270px;
+            overflow: hidden;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
+            transform-origin: center top;
+            transform-style: preserve-3d;
+            transform: translateZ(0);
+            transition: 0.3s;
+        }
+
+        .card img {
+            width: 100%;
+            min-height: 100%;
+        }
+
+        .card figcaption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            padding-bottom: 10px;
+            font-size: 20px;
+            background: none;
+            color: black;
+            transform: translateY(100%);
+            transition: 0.3s;
+        }
+
+        .card:after {
+            content: '';
+            position: absolute;
+            z-index: 10;
+            width: 200%;
+            height: 100%;
+            top: -90%;
+            left: -20px;
+            opacity: 0.1;
+            transform: rotate(45deg);
+            background: linear-gradient(to top, transparent, #fff 15%, rgba(255, 255, 255, 0.5));
+            transition: 0.3s;
+        }
+
+        .card:hover,
+        .card:focus,
+        .card:active {
+            box-shadow: 0 8px 16px 3px rgba(0, 0, 0, 0.6);
+            transform: translateY(-3px) scale(1.05) rotateX(15deg);
+        }
+
+        .card:hover figcaption,
+        .card:focus figcaption,
+        .card:active figcaption {
+            transform: none;
+        }
+
+        .card:hover:after,
+        .card:focus:after,
+        .card:active:after {
+            transform: rotate(25deg);
+            top: -40%;
+            opacity: 0.15;
+        }
+
+        .news {
+            display: flex;
+            flex-flow: row wrap;
+        }
+
+        .article {
+            position: relative;
+            overflow: hidden;
+            width: 350px;
+            height: 235px;
+            margin: 20px;
+        }
+
+        .article img {
+            width: 100%;
+            min-height: 100%;
+            transition: 0.2s;
+        }
+
+        .article figcaption {
+            position: absolute;
+            font-size: 14px;
+            text-shadow: 0 1px 0 rgba(51, 51, 51, 0.3);
+            color: #fff;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            padding: 40px;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+            background: rgba(6, 18, 53, 0.6);
+            opacity: 0;
+            transform: scale(1.15);
+            transition: 0.2s;
+        }
+
+        .article figcaption h3 {
+            color: #3792e3;
+            font-size: 16px;
+            margin-bottom: 0;
+            font-weight: bold;
+        }
+
+        .article:hover img,
+        .article:focus img,
+        .article:active img {
+            filter: blur(3px);
+            transform: scale(0.97);
+        }
+
+        .article:hover figcaption,
+        .article:focus figcaption,
+        .article:active figcaption {
+            opacity: 1;
+            transform: none;
+        }
+    </style>
+</head>
+
+<body>
+    {% block body %}
+    <div class="wrapper">
+        {% csrf_token %}
+        <h2><strong>Healthy Recipes<span>(4)</span></strong></h2>
+        <div class="cards">
+            <figure class="card">
+                <img src="{% static 'images/img_1.png' %}" alt="Dota 2" />
+                <figcaption>strawberry leaf salad</figcaption>
+            </figure>
+            <figure class="card">
+                <img src="{% static 'image/img_2.png' %}" alt="Dota 2" />
+                <figcaption>Veg Nuts Salad</figcaption>
+            </figure>
+            <figure class="card">
+                <img src="{% static 'image/img_3.png' %}" alt="Dota 2" />
+                <figcaption>leafy cream salad</figcaption>
+            </figure>
+            <figure class="card">
+                <img src="{% static 'images/img_4.png' %}" alt="Dota 2" />
+                <figcaption>Mango Bread salad</figcaption>
+            </figure>
+            <figure class="card">
+                <img src="{% static 'images/img_5.png' %}" alt="Dota 2" />
+                <figcaption>Banana cream salad</figcaption>
+            </figure>
+            <figure class="card">
+                <img src="{% static 'images/img_6.png' %}" alt="Dota 2" />
+                <figcaption>Mashroom Avacado</figcaption>
+            </figure>
+            <figure class="card">
+                <img src="{% static 'images/img_7.png' %}" alt="Stick Fight" />
+                <figcaption>Stick Fight</figcaption>
+            </figure>
+            <figure class="card">
+                <img src="{% static 'images/img_8.png' %}" alt="Minion Masters" />
+                <figcaption>Minion Masters</figcaption>
+            </figure>
+            <figure class="card">
+                <img src="{% static 'images/img_9.png' %}" alt="KoseBoz!" />
+                <figcaption>KoseBoz!</figcaption>
+            </figure>
+        </div>
+        <h2><strong>What's new?</strong></h2>
+        <div class="news">
+            <figure class="article">
+                <img src="{% static 'images/img_10.png' %}" alt="New Item" />
+                <figcaption>
+                    <h3>Tomato leafy Garlic</h3>
+                    <p>This is one of the easiest Italian pasta dishes I make and I hope you add it to your own list of recipes.
+
+I call it Pasta with Fresh Tomatoes and Garlic because those are the main ingredients. Brilliant recipe name – I know!</p>
+                </figcaption>
+            </figure>
+            <figure class="article">
+                <img src="{% static 'images/img_11.png' %}" alt="Update" />
+                <figcaption>
+                    <h3>Fruity cheese salad</h3>
+                    <p>This is the  food were  control our stress level in the body mainly it useful for GYM persons to grow their body.</p>
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+
+</html>

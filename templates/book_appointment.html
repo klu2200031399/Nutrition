@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        /* Style for navbar */
+        nav {
+            width: 200px;
+            background-color: #333;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            padding-top: 20px;
+        }
+
+        nav a {
+            display: block;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-bottom: 1px solid #666;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <a href="#">Home</a>
+        <a href="{% url 'view_appointments' %}">View Appointments</a>
+    </nav>
+
+    <h2 class="center">Book Appointment</h2>
+    <form id="payment-form" method="post">
+        {% csrf_token %}
+        <label for="id_doctor">Doctor:</label>
+        <select name="doctor" id="id_doctor">
+            {% for doctor_id, doctor_name, doctor_specialization in doctors %}
+                <option value="{{ doctor_id }}">{{ doctor_name }} - {{ doctor_specialization }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="id_appointment_time">Appointment time:</label>
+        <input type="datetime-local" id="id_appointment_time" name="appointment_time"><br><br>
+
+        <label for="id_patient">Patient:</label>
+        <input type="text" id="id_patient" name="patient"><br><br>
+
+        <label for="id_num_days">Num days:</label>
+        <input type="number" id="id_num_days" name="num_days"><br><br>
+
+        <!-- Payment details -->
+        <label for="card-element">
+            Credit or debit card
+        </label>
+        <div id="card-element">
+            <!-- A Stripe Element will be inserted here. -->
+        </div>
+
+        <!-- Used to display form errors. -->
+        <div id="card-errors" role="alert"></div>
+
+        <button id="submit-button" type="submit">Pay and Book Appointment</button>
+    </form>
+
+    <!-- Script for Stripe payment -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        var stripe = Stripe('{{ STRIPE_PUBLIC_KEY }}');
+        var elements = stripe.elements();
+        var form = document.getElementById('payment-form');
+
+        // Your existing Stripe payment setup here
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            stripe.createToken(card).then(function(result) {
+                if (result.error) {
+                    // Handle errors here
+                } else {
+                    // Handle successful token creation here
+                    stripeTokenHandler(result.token);
+                }
+            });
+        });
+
+        function stripeTokenHandler(token) {
+            var form = document.getElementById('payment-form');
+            var hiddenInput = document.createElement('input');
+            hiddenInput.setAttribute('type', 'hidden');
+            hiddenInput.setAttribute('name', 'stripeToken');
+            hiddenInput.setAttribute('value', token.id);
+            form.appendChild(hiddenInput);
+
+            // Redirect to payment.html after adding the token
+            window.location.href = 'payment.html'; // Change 'payment.html' to your desired URL
+        }
+    </script>
+</body>
+</html>

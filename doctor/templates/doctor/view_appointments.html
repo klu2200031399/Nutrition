@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Doctor's Appointments</title>
+</head>
+<body>
+    <h1>Doctor's Appointments</h1>
+    <table border="1">
+        <tr>
+            <th>Doctor</th>
+            <th>Appointment Time</th>
+            <th>Patient</th>
+            <th>Number of Days</th>
+        </tr>
+        {% for appointment in appointments %}
+        <tr>
+            <td>{{ appointment.doctor.name }}</td>
+            <td>{{ appointment.appointment_time }}</td>
+            <td>{{ appointment.patient }}</td>
+            <td>{{ appointment.num_days }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No appointments found.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

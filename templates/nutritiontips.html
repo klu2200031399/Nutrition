@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrition Tips</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"] {
+            width: calc(100% - 80px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            width: 80px;
+            padding: 10px;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            background-color: #4CAF50;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Nutrition Tips</h1>
+    <form id="searchForm">
+        <input type="text" id="searchInput" placeholder="Search for nutrition tips...">
+        <input type="submit" value="Search">
+    </form>
+
+    <div id="results">
+        <ul id="tipsList">
+            <!-- Tips will be displayed here -->
+        </ul>
+    </div>
+</div>
+
+<script>
+    document.getElementById('searchForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const query = document.getElementById('searchInput').value;
+        searchTips(query);
+    });
+
+    function searchTips(query) {
+        // Simulating fetching data (replace with actual fetch from Google)
+        const dummyData = [
+            "Eat plenty of fruits and vegetables.",
+            "Drink plenty of water throughout the day.",
+            "Limit processed foods and sugary drinks.",
+            "Choose whole grains over refined grains.",
+            "Incorporate lean protein sources into your diet."
+        ];
+
+        const resultsContainer = document.getElementById('tipsList');
+        resultsContainer.innerHTML = '';
+
+        dummyData.forEach(function(tip) {
+            if (tip.toLowerCase().includes(query.toLowerCase())) {
+                const li = document.createElement('li');
+                li.textContent = tip;
+                resultsContainer.appendChild(li);
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

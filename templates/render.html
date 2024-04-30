@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% extends 'Navbar.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+{% block body %}
+<div class="card-group">
+  <div class="card">
+    <img src="{% static 'Cl.jpg' %}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 align="center" class="card-title">Client</h5>
+    </div>
+     <a href="{% url 'login1' %}" class="btn btn-primary">Login</a>
+  </div>
+  <div class="card">
+    <img src="{% static 'Doc.jpg' %}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 align="center" class="card-title">Doctor</h5>
+    </div>
+       <a href="{% url 'login_doctor' %}" class="btn btn-primary">Login</a>
+  </div>
+  <div class="card">
+    <img src="{% static 'admin.jpeg' %}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 align="center" class="card-title">Admin</h5>
+    </div>
+       <a href="{% url 'login_admin' %}" class="btn btn-primary">Login</a>
+  </div>
+</div>
+{% endblock %}
+</html>

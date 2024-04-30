@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <!-- Here goes any CSS links or stylesheets -->
+    <style>
+        /* Paste CSS styles from the first HTML here */
+        /* Make sure to avoid printing the CSS code */
+        /* Only copy the CSS rules */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .signin {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .content {
+            max-width: 400px;
+            margin: auto;
+        }
+
+        .content h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form .inputBox {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .form .inputBox input {
+            width: 100%;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #333;
+            letter-spacing: 1px;
+            border: none;
+            border-bottom: 1px solid #333;
+            outline: none;
+            background: transparent;
+        }
+
+        .form .inputBox i {
+            position: absolute;
+            left: 0;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #333;
+            pointer-events: none;
+            transition: 0.5s;
+        }
+
+        .form .inputBox input:focus + i,
+        .form .inputBox input:valid + i {
+            transform: translateY(-18px);
+            font-size: 12px;
+            color: #ff7b00;
+        }
+
+        .form .inputBox input:focus,
+        .form .inputBox input:valid {
+            border-bottom: 2px solid #ff7b00;
+        }
+
+        .form .inputBox input[type="submit"] {
+            width: 100%;
+            background: #ff7b00;
+            border: none;
+            outline: none;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        .form .inputBox input[type="submit"]:hover {
+            background: #333;
+        }
+    </style>
+</head>
+<body>
+{% block body %}
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    <div class="signin">
+        <div class="content">
+            <h2>Sign In</h2>
+            <div class="form">
+                <form method="post" action="{% url 'login1' %}">
+                    {% csrf_token %}
+                    <div class="inputBox">
+                        <input type="text" name="username" required> <i>Username</i>
+                    </div>
+                    <div class="inputBox">
+                        <input type="password" name="password" required> <i>Password</i>
+                    </div>
+                    <div class="inputBox">
+                        <input name="SUBMIT" type="submit" value="Login">
+                    </div>
+                </form>
+            </div>
+        </div>
+        if you don't have any account?<a href="{% url 'signup' %}">signup</a>
+    </div>
+{% endblock %}
+</body>
+</html>

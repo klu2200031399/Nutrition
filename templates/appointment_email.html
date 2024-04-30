@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Appointment Confirmation</h2>
+        <p>Your appointment has been successfully booked with the following details:</p>
+        <ul>
+            <li><strong>Appointment Time:</strong> {{ appointment.appointment_time }}</li>
+            <li><strong>Patient:</strong> {{ appointment.patient }}</li>
+            <li><strong>Duration:</strong> {{ appointment.num_days }} days</li>
+            <li><strong>User's Email:</strong> {{ user_email }}</li>
+        </ul>
+        <p>Thank you for choosing our service. We look forward to seeing you!</p>
+    </div>
+</body>
+</html>

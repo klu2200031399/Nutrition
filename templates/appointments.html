@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Appointments</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            color: #333;
+            text-align:center ;
+            margin-top: 50px ;
+
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        li {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 10px;
+            width: 300px;
+        }
+
+        li h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        li p {
+            margin: 5px 0;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h2>View Appointments</h2>
+    <ul>
+        {% for appointment in appointments %}
+            <li>
+                <h3>{{ appointment.doctor }}</h3>
+                                <p>Specialization: {{ appointment.doctor.specialization }}</p>
+
+                <p>Appointment Time: {{ appointment.appointment_time }}</p>
+
+                <p>Patient: {{ appointment.patient }}</p>
+                <p>Number of Days: {{ appointment.num_days }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

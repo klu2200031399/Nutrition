@@ -1,0 +1,17 @@
+<!-- doctor/templates/doctor/view_appointment_details.html -->
+
+
+
+{% block title %}Appointment Details - Ohna Doctor{% endblock %}
+
+{% block content %}
+    <h2>Appointment Details</h2>
+
+    <p><strong>Client Name:</strong> {{ appointment.client_name }}</p>
+    <p><strong>Appointment Date:</strong> {{ appointment.appointment_date }}</p>
+    <p><strong>Additional Details:</strong> {{ appointment.additional_details }}</p>
+    <!-- Add more fields as needed -->
+
+    <!-- Add a link to go back to the list of appointments -->
+    <a href="{% url 'doctor:view_appointments' %}">Back to Appointments</a>
+{% endblock %}

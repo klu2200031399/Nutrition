@@ -1,0 +1,55 @@
+<!-- add_doctor.html -->
+
+
+
+{% block title %}Add Doctor - Ohna Admin{% endblock %}
+
+{% block content %}
+    <style>
+        /* Styling for the body (background color) */
+        body {
+            background-color: #0d1b2a; /* Adjust color as needed */
+        }
+
+        /* Styling for the form */
+        form {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #222;
+            color: #fff;
+            border-radius: 10px;
+        }
+
+        /* Styling for form elements */
+        input[type="text"],
+        input[type="email"],
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        button[type="submit"] {
+            cursor: pointer;
+            background-color: #ff8800;
+        }
+
+        /* Styling for headings */
+        h2 {
+            text-align: center;
+            color: #ff8800;
+        }
+    </style>
+
+    <h2>Add Doctor</h2>
+    <form method="post" action="{% url 'admins:add_doctor' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+{% endblock %}

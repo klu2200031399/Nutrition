@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three Cards</title>
+    <style>
+         body {
+           background: linear-gradient(30deg,#ff6b6b ,#9bf6ff );
+        }
+        .card {
+            width: 22%;
+            margin: 20px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
+            padding: 2px 16px;
+        }
+
+        .button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<div >
+<div class="card">
+    <div class="container">
+             <img src="{% static 'images/pregnant.jpg' %}" alt="Placeholder" style="width:100%">
+        <h4><b>Pregnant or Breastfeeding Women:</b></h4>
+        <p>Description of card 1.</p>
+              <button class="button" onclick="location.href='{% url 'pregnant' %}'">Click Here</button>
+    </div>
+</div>
+<div class="card">
+    <div class="container">
+             <img src="{% static 'images/childrean.jpg' %}" alt="Placeholder" style="width:100%">
+        <h4><b>Children and Adolescents:</b></h4>
+        <p>Description of card 1.</p>
+        <button class="button" onclick="location.href='homepage.html'">Go to Homepage</button>
+    </div>
+</div>
+
+<div class="card">
+    <div class="container">
+             <img src="{% static 'images/athlet.jpg' %}" alt="Placeholder" style="width:100%">
+        <h4><b>Athletes and Fitness Enthusiasts</b></h4>
+        <p>Description of card 1.</p>
+        <button class="button" onclick="location.href='homepage.html'">Go to Homepage</button>
+    </div>
+</div>
+
+<div class="card">
+    <div class="container">
+             <img src="{% static 'images/chronic.png' %}" alt="Placeholder" style="width:100%">
+        <h4><b>Chronic Health Conditions</b></h4>
+        <p>Description of card 1.</p>
+        <button class="button" onclick="location.href='homepage.html'">Go to Homepage</button>
+    </div>
+</div>
+
+<div class="card">
+    <div class="container">
+             <img src="{% static 'images/Vegan-vs-Vegetarian.jpg' %}" alt="Placeholder" style="width:100%">
+        <h4><b>Vegetarians and Vegans</b></h4>
+        <p>Description of card 1.</p>
+        <button class="button" onclick="location.href='homepage.html'">Go to Homepage</button>
+    </div>
+</div>
+
+<div class="card">
+    <div class="container">
+             <img src="{% static 'images/elder.jpg' %}" alt="Placeholder" style="width:100%">
+        <h4><b>Elderly Individuals:</b></h4>
+        <p>Description of card 1.</p>
+        <button class="button" onclick="location.href='homepage.html'">Go to Homepage</button>
+    </div>
+</div>
+
+<div class="card">
+    <div class="container">
+             <img src="{% static 'images/eatingdisorder.jpg' %}" alt="Placeholder" style="width:100%">
+        <h4><b>Eating Disorders:</b></h4>
+        <p>Description of card 1.</p>
+        <button class="button" onclick="location.href='homepage.html'">Go to Homepage</button>
+    </div>
+</div>
+
+<div class="card">
+    <div class="container">
+             <img src="{% static 'images/foodallergie.jpg' %}" alt="Placeholder" style="width:100%">
+        <h4><b> Food Allergies or Intolerances:</b></h4>
+        <p>Description of card 1.</p>
+        <button class="button" onclick="location.href='homepage.html'">Go to Homepage</button>
+    </div>
+</div>
+
+
+<div class="card">
+    <div class="container">
+             <img src="{% static 'images/pregnant.jpg' %}" alt="Placeholder" style="width:100%">
+        <h4><b>Culinary Education and Cooking Skills</b></h4>
+        <p>Description of card 1.</p>
+        <button class="button" onclick="location.href='homepage.html'">Go to Homepage</button>
+    </div>
+</div>
+
+<div class="card">
+    <div class="container">
+             <img src="{% static 'images/weight.jpg' %}" alt="Placeholder" style="width:100%">
+        <h4><b> Weight Management Goals</b></h4>
+        <p>Description of card 1.</p>
+        <button class="button" onclick="location.href='homepage.html'">Go to Homepage</button>
+    </div>
+</div>
+
+
+</div>
+
+</body>
+</html>
